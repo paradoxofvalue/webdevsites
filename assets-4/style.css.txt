@@ -1,0 +1,4 @@
+/*
+Theme Name: Govno-Jopa
+Author: Ahuinnie parni i devchonki
+*/
