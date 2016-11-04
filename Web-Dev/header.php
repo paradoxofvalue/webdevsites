@@ -38,8 +38,8 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="navbar-brand" href="index.html">
-                    	<h1><img src="images/logo.png" alt="logo"></h1>
+                    <a class="navbar-brand" href="<?php echo home_url(); ?>">
+                    	<h1><img src="<? echo THEME_DIR; ?>/images/logo.png" alt="logo"></h1>
                     </a>
                     
                 </div>

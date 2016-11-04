@@ -6,13 +6,13 @@
                     <div class="slide-text">
                         <h1>We turn your ideas</h1>
                         <p>We do things we love. We help our clients build efficient business with the help of the e-marketing tools. We develop websites, online-stores, mobile applications, promote all the stated above across the web. We cultivate quality, service and deadline. We will convert your ideas into great results. </p>
-                        <a href="aboutus.html" class="btn btn-common">LEARN MORE</a>
+                        <a href="#features" class="btn btn-common">LEARN MORE</a>
                     </div>
-                    <img src="images/home/slider/hill.png" class="slider-hill" alt="slider image">
-                    <img src="images/home/slider/house.png" class="slider-house" alt="slider image">
-                    <img src="images/home/slider/sun.png" class="slider-sun" alt="slider image">
-                    <img src="images/home/slider/birds1.png" class="slider-birds1" alt="slider image">
-                    <img src="images/home/slider/birds2.png" class="slider-birds2" alt="slider image">
+                    <img src="<? echo THEME_DIR; ?>/images/home/slider/hill.png" class="slider-hill" alt="slider image">
+                    <img src="<? echo THEME_DIR; ?>/images/home/slider/house.png" class="slider-house" alt="slider image">
+                    <img src="<? echo THEME_DIR; ?>/images/home/slider/sun.png" class="slider-sun" alt="slider image">
+                    <img src="<? echo THEME_DIR; ?>/images/home/slider/birds1.png" class="slider-birds1" alt="slider image">
+                    <img src="<? echo THEME_DIR; ?>/images/home/slider/birds2.png" class="slider-birds2" alt="slider image">
                 </div>
             </div>
         </div>
@@ -23,42 +23,19 @@
     <section id="services">
         <div class="container">
             <div class="row">
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <img src="images/home/icon1.png" alt="">
-                        </div>
-                        <h2>E-commerce</h2>
-                        <p>We develop profitable ecommerce
-websites for the sake of your KPIs and
-conversion rates based on Magento,
-Drupal and Opencart CMS. </p>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="600ms">
-                            <img src="images/home/icon2.png" alt="">
-                        </div>
-                        <h2>Website development</h2>
-                        <p>We offer responsive website development
-which will make your life easier and cheaper.
-Responsive website design displays adequately
-across all types of devices </p>
-                    </div>
-                </div>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="900ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="900ms">
-                            <img src="images/home/icon3.png" alt="">
-                        </div>
-                        <h2>Mobile app development</h2>
-                        <p>You will enjoy Android and IOS app development
-services provided by our company. Be closer to your
-mobile audience and order app development both for
-IOS or Android devices. </p>
-                    </div>
-                </div>
+                <? dynamic_sidebar('services'); ?>
+<!--                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">-->
+<!--                    <div class="single-service">-->
+<!--                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">-->
+<!--                            <img src="--><?// echo THEME_DIR; ?><!--/images/home/icon1.png" alt="">-->
+<!--                        </div>-->
+<!--                        <h2>E-commerce</h2>-->
+<!--                        <p>We develop profitable ecommerce-->
+<!--websites for the sake of your KPIs and-->
+<!--conversion rates based on Magento,-->
+<!--Drupal and Opencart CMS. </p>-->
+<!--                    </div>-->
+<!--                </div>-->
             </div>
         </div>
     </section>
@@ -90,7 +67,7 @@ IOS or Android devices. </p>
             <div class="row">
                 <div class="single-features">
                     <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="images/home/image1.png" class="img-responsive" alt="">
+                        <img src="<? echo THEME_DIR; ?>/images/home/image1.png" class="img-responsive" alt="">
                     </div>
                     <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
                         <h2>Our values</h2>
@@ -103,12 +80,12 @@ IOS or Android devices. </p>
                         <P>As we are a web and mobile development company, we provide these services: website design and development, markuping, formation of project requirements, website architecture, IOS and Android app development, and responsive design.</P>
                     </div>
                     <div class="col-sm-5 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="images/home/image2.png" class="img-responsive" alt="">
+                        <img src="<? echo THEME_DIR; ?>/images/home/image2.png" class="img-responsive" alt="">
                     </div>
                 </div>
                 <div class="single-features">
                     <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="images/home/image3.png" class="img-responsive" alt="">
+                        <img src="<? echo THEME_DIR; ?>/images/home/image3.png" class="img-responsive" alt="">
                     </div>
                     <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
                         <h2>Mutual respect and understanding</h2>
@@ -125,28 +102,28 @@ IOS or Android devices. </p>
             <div class="row">
                 <div class="col-sm-12">
                     <div class="clients text-center wow fadeInUp" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <p><img src="images/home/clients.png" class="img-responsive" alt=""></p>
+                        <p><img src="<? echo THEME_DIR; ?>/images/home/clients.png" class="img-responsive" alt=""></p>
                         <h1 class="title">Happy Clients</h1>
                         <p>OUR BEST WEBSITE DESIGNS</p>
                     </div>
                     <div class="clients-logo wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
                         <div class="col-xs-3 col-sm-2">
-                            <a href="#"><img src="images/home/client1.png" class="img-responsive" alt=""></a>
+                            <a href="#"><img src="<? echo THEME_DIR; ?>/images/home/client1.png" class="img-responsive" alt=""></a>
                         </div>
                         <div class="col-xs-3 col-sm-2">
-                            <a href="#"><img src="images/home/client2.png" class="img-responsive" alt=""></a>
+                            <a href="#"><img src="<? echo THEME_DIR; ?>/images/home/client2.png" class="img-responsive" alt=""></a>
                         </div>
                          <div class="col-xs-3 col-sm-2">
-                            <a href="#"><img src="images/home/client3.png" class="img-responsive" alt=""></a>
+                            <a href="#"><img src="<? echo THEME_DIR; ?>/images/home/client3.png" class="img-responsive" alt=""></a>
                         </div>
                          <div class="col-xs-3 col-sm-2">
-                            <a href="#"><img src="images/home/client4.png" class="img-responsive" alt=""></a>
+                            <a href="#"><img src="<? echo THEME_DIR; ?>/images/home/client4.png" class="img-responsive" alt=""></a>
                         </div>
                          <div class="col-xs-3 col-sm-2">
-                            <a href="#"><img src="images/home/client5.png" class="img-responsive" alt=""></a>
+                            <a href="#"><img src="<? echo THEME_DIR; ?>/images/home/client5.png" class="img-responsive" alt=""></a>
                         </div>
                          <div class="col-xs-3 col-sm-2">
-                            <a href="#"><img src="images/home/client6.png" class="img-responsive" alt=""></a>
+                            <a href="#"><img src="<? echo THEME_DIR; ?>/images/home/client6.png" class="img-responsive" alt=""></a>
                         </div>
                     </div>
                 </div>

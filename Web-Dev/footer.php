@@ -21,8 +21,8 @@
                                             <a href="'. get_permalink() .'">'. the_post_thumbnail(array(81, 81)) .'</a>
                                         </div>
                                         <div class="media-body">
-                                            <blockquote>'. the_content() .'</blockquote>
-                                            <h3><a href="'. get_permalink() .'">'. get_post_meta( $the_query, 'author-meta-box') .'</a></h3>
+                                            <blockquote>'. wp_strip_all_tags(get_the_content()) .'</blockquote>
+                                            <h3><a>-'. get_post_meta( get_the_ID(), 'author-meta', true) .'</a></h3>
                                         </div>
                                      </div>';
                             }

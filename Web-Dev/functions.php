@@ -39,6 +39,7 @@ function web_dev_customize_register( $wp_customize ) {
   'description' => __( 'Add address, phone etc. here!' ),
   'priority' => 30
 ) );
+    $def = array('default' => '1234 Somewhere Street');
 
 											  //SETINGS
 											  $wp_customize->add_setting( 'address', $def );
@@ -119,21 +120,25 @@ add_action( 'customize_register', 'web_dev_customize_register' );
 
 function author_meta_box_markup($object)
 {
-        wp_nonce_field(basename(__FILE__), "meta-box-nonce");
-        $post = the_post();
-        if( in_category('testimonials', $post) )
+    wp_nonce_field(basename(__FILE__), "meta-box-nonce");
+
+    $post = $_GET['post'];
+    if (in_category('testimonials', $post)){
         echo '	
         <div>
             <label for="meta-box-text">Author</label>
-            <input name="meta-box-text" type="text" value="'. echo get_post_meta($object->ID, "meta-box-text", true) .'">
+            <input name="meta-box-text" type="text" value="' . get_post_meta($object->ID, "author-meta", true) . '">
         </div> ';
+    }else{
+        echo '<div><label>Disable for this post(Only for testimonials).</label></div>';
+    }
 
 }
 function add_author_meta_box()
 {
     add_meta_box("author-meta-box", "Author", "author_meta_box_markup", "post", "normal", "high", null);
 }
-add_action("add_meta_boxes", "add_icon_meta_box");
+add_action("add_meta_boxes", "add_author_meta_box");
 function save_custom_meta_box($post_id, $post, $update)
 {
     if (!isset($_POST["meta-box-nonce"]) || !wp_verify_nonce($_POST["meta-box-nonce"], basename(__FILE__)))
@@ -145,14 +150,12 @@ function save_custom_meta_box($post_id, $post, $update)
     $slug = "post";
     if($slug != $post->post_type)
         return $post_id;
-    $cat = "testimonials";
-    if($cat != $post->)
     $meta_box_text_value = "";
     if(isset($_POST["meta-box-text"]))
     {
         $meta_box_text_value = $_POST["meta-box-text"];
     }
-    update_post_meta($post_id, "meta-box-text", $meta_box_text_value);
+    update_post_meta($post_id, "author-meta", $meta_box_text_value);
 }
 add_action("save_post", "save_custom_meta_box", 10, 3);
 
@@ -162,4 +165,93 @@ wp_insert_term(
   array(
     'description'=> '',
     'slug' => 'testimonials'
-  );
+  ));
+
+add_theme_support( 'post-thumbnails' );
+
+add_action( 'widgets_init', 'web_dev_widgets_init' );
+
+function web_dev_widgets_init() {
+    register_sidebar( array(
+        'name' => __( 'Services', 'web_dev' ),
+        'id' => 'services',
+        'description' => __( 'Use only "Service" Widget!', 'services' )
+    ) );
+}
+
+/**
+ * Adds Foo_Widget widget.
+ */
+class Foo_Widget extends WP_Widget {
+
+    /**
+     * Register widget with WordPress.
+     */
+    public function __construct() {
+        parent::__construct(
+            'service_widget', // Base ID
+            'Service_Widget', // Name
+            array( 'description' => __( 'A Service Widget', 'web_dev' ), ) // Args
+        );
+    }
+
+    /**
+     * Front-end display of widget.
+     *
+     * @see WP_Widget::widget()
+     *
+     * @param array $args     Widget arguments.
+     * @param array $instance Saved values from database.
+     */
+    public function widget( $args, $instance ) {
+        extract( $args );
+        $title = apply_filters( 'widget_title', $instance['title'] );
+
+        echo $before_widget;
+        if ( ! empty( $title ) ) {
+            echo $before_title . $title . $after_title;
+        }
+        echo __( 'Service', 'web_dev' );
+        echo $after_widget;
+    }
+
+    /**
+     * Back-end widget form.
+     *
+     * @see WP_Widget::form()
+     *
+     * @param array $instance Previously saved values from database.
+     */
+    public function form( $instance ) {
+        if ( isset( $instance[ 'title' ] ) ) {
+            $title = $instance[ 'title' ];
+        }
+        else {
+            $title = __( 'Service title', 'web_dev' );
+        }
+        ?>
+        <p>
+            <label for="<?php echo $this->get_field_name( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+        </p>
+        <?php
+    }
+
+    /**
+     * Sanitize widget form values as they are saved.
+     *
+     * @see WP_Widget::update()
+     *
+     * @param array $new_instance Values just sent to be saved.
+     * @param array $old_instance Previously saved values from database.
+     *
+     * @return array Updated safe values to be saved.
+     */
+    public function update( $new_instance, $old_instance ) {
+        $instance = array();
+        $instance['title'] = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+
+        return $instance;
+    }
+
+}
