@@ -1,4 +1,0 @@
-branches
-- julia
-- dima
-- vadim
