@@ -21,8 +21,8 @@
                 <div class="col-sm-12 overflow">
                    <div class="social-icons pull-right">
                         <ul class="nav nav-pills">
-                            <li><a href=""><i class="fa fa-yelp"></i></a></li>
-                            <li><a href=""><i class="fa fa-google-plus"></i></a></li>
+                            <li><a href="<?php echo get_theme_mod('yelp'); ?>"><i class="fa fa-yelp"></i></a></li>
+                            <li><a href="<?php echo get_theme_mod('google_plus'); ?>"><i class="fa fa-google-plus"></i></a></li>
                         </ul>
                     </div> 
                 </div>
