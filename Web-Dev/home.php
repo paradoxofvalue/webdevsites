@@ -24,18 +24,18 @@
         <div class="container">
             <div class="row">
                 <? dynamic_sidebar('services'); ?>
-<!--                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">-->
-<!--                    <div class="single-service">-->
-<!--                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">-->
-<!--                            <img src="--><?// echo THEME_DIR; ?><!--/images/home/icon1.png" alt="">-->
-<!--                        </div>-->
-<!--                        <h2>E-commerce</h2>-->
-<!--                        <p>We develop profitable ecommerce-->
-<!--websites for the sake of your KPIs and-->
-<!--conversion rates based on Magento,-->
-<!--Drupal and Opencart CMS. </p>-->
-<!--                    </div>-->
-<!--                </div>-->
+                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <div class="single-service">
+                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
+                            <img src="<? echo THEME_DIR; ?>/images/home/icon1.png" alt="">
+                        </div>
+                        <h2>E-commerce</h2>
+                        <p>We develop profitable ecommerce
+websites for the sake of your KPIs and
+conversion rates based on Magento,
+Drupal and Opencart CMS. </p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

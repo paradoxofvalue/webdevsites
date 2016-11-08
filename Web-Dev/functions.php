@@ -178,11 +178,13 @@ function web_dev_widgets_init() {
         'description' => __( 'Use only "Service" Widget!', 'services' )
     ) );
 }
-
+add_action( 'widgets_init', function(){
+    register_widget( 'Service_Widget' );
+});
 /**
- * Adds Foo_Widget widget.
+ * Adds Service_Widget widget.
  */
-class Foo_Widget extends WP_Widget {
+class Service_Widget extends WP_Widget {
 
     /**
      * Register widget with WordPress.
@@ -190,7 +192,7 @@ class Foo_Widget extends WP_Widget {
     public function __construct() {
         parent::__construct(
             'service_widget', // Base ID
-            'Service_Widget', // Name
+            'Service Widget', // Name
             array( 'description' => __( 'A Service Widget', 'web_dev' ), ) // Args
         );
     }
@@ -206,13 +208,17 @@ class Foo_Widget extends WP_Widget {
     public function widget( $args, $instance ) {
         extract( $args );
         $title = apply_filters( 'widget_title', $instance['title'] );
+        $content = $instance['content'];
 
-        echo $before_widget;
-        if ( ! empty( $title ) ) {
-            echo $before_title . $title . $after_title;
-        }
-        echo __( 'Service', 'web_dev' );
-        echo $after_widget;
+        echo '<div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <div class="single-service">
+                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
+                            <img src="'.esc_url($instance['image_uri']).'" alt="">
+                        </div>
+                        <h2>'. $title .'</h2>
+                        <p>'. $content .'</p>
+                    </div>
+                </div>';
     }
 
     /**
@@ -227,12 +233,28 @@ class Foo_Widget extends WP_Widget {
             $title = $instance[ 'title' ];
         }
         else {
-            $title = __( 'Service title', 'web_dev' );
+            $title = __( '', 'web_dev' );
+        }
+        if ( isset( $instance[ 'content' ] ) ) {
+            $content = $instance[ 'content' ];
+        }
+        else {
+            $content = __( '', 'web_dev' );
         }
         ?>
         <p>
             <label for="<?php echo $this->get_field_name( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_name( 'content' ); ?>"><?php _e( 'Text:' ); ?></label>
+            <textarea class="widefat" id="<?php echo $this->get_field_id( 'content' ); ?>" name="<?php echo $this->get_field_name( 'content' ); ?>" value="<?php echo esc_attr( $content ); ?>">
+            </textarea>
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_id('image_uri'); ?>">Image</label><br />
+            <input type="text" class="img" name="<?php echo $this->get_field_name('image_uri'); ?>" id="<?php echo $this->get_field_id('image_uri'); ?>" value="<?php echo $instance['image_uri']; ?>" />
+            <input type="button" class="select-img" value="Select Image" />
         </p>
         <?php
     }
@@ -250,8 +272,19 @@ class Foo_Widget extends WP_Widget {
     public function update( $new_instance, $old_instance ) {
         $instance = array();
         $instance['title'] = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
+        $instance['content'] = ( !empty( $new_instance['content'] ) ) ? strip_tags( $new_instance['content'] ) : '';
+        $instance['image_uri'] = ( !empty( $new_instance['image_uri'] ) ) ? strip_tags( $new_instance['image_uri'] ) : '';
 
         return $instance;
     }
 
 }
+function services_enqueue()
+{
+    wp_enqueue_style('thickbox');
+    wp_enqueue_script('media-upload');
+    wp_enqueue_script('thickbox');
+    // moved the js to an external file, you may want to change the path
+    wp_enqueue_script('services', THEME_DIR . '/script.js', null, null, true);
+}
+add_action('admin_enqueue_scripts', 'services_enqueue');
