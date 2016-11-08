@@ -145,3 +145,12 @@ function save_custom_meta_box($post_id, $post, $update)
 }
 
 add_action("save_post", "save_custom_meta_box", 10, 3);
+
+wp_insert_term(
+    'Main_link',
+    'category',
+    array(
+        'description'=> '',
+        'slug' => 'Main_link'
+    ));
+

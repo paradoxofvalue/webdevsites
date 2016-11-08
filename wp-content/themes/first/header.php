@@ -22,8 +22,9 @@
                 <li class="special">
                     <a href="#menu" class="menuToggle"><span>Menu</span></a>
                     <div id="menu">
-                    <?php wp_nav_menu(array('menu' => 'main_menu',
-                        'container' => '')); ?>
+                        <?php wp_nav_menu(array('menu' => 'main_menu',
+                            'container' => ''));
+                        ?>
                     </div>
                 </li>
             </ul>
