@@ -4,8 +4,8 @@
             <div class="row">
                 <div class="main-slider">
                     <div class="slide-text">
-                        <h1>We turn your ideas</h1>
-                        <p>We do things we love. We help our clients build efficient business with the help of the e-marketing tools. We develop websites, online-stores, mobile applications, promote all the stated above across the web. We cultivate quality, service and deadline. We will convert your ideas into great results. </p>
+                        <h1><?php echo bloginfo('name'); ?></h1>
+                        <p><?php echo bloginfo('description'); ?></p>
                         <a href="#features" class="btn btn-common">LEARN MORE</a>
                     </div>
                     <img src="<? echo THEME_DIR; ?>/images/home/slider/hill.png" class="slider-hill" alt="slider image">
@@ -24,18 +24,6 @@
         <div class="container">
             <div class="row">
                 <? dynamic_sidebar('services'); ?>
-                <div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <div class="single-service">
-                        <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <img src="<? echo THEME_DIR; ?>/images/home/icon1.png" alt="">
-                        </div>
-                        <h2>E-commerce</h2>
-                        <p>We develop profitable ecommerce
-websites for the sake of your KPIs and
-conversion rates based on Magento,
-Drupal and Opencart CMS. </p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -47,7 +35,7 @@ Drupal and Opencart CMS. </p>
                 <div class="row">
                     <div class="action take-tour">
                         <div class="col-sm-7 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                            <h1 class="title">XXX</h1>
+                            <h1 class="title"><?php echo bloginfo('name'); ?></h1>
                             <p>Your best friend and parthner.</p>
                         </div>
                         <div class="col-sm-5 text-center wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
@@ -67,7 +55,7 @@ Drupal and Opencart CMS. </p>
             <div class="row">
                 <div class="single-features">
                     <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="<? echo THEME_DIR; ?>/images/home/image1.png" class="img-responsive" alt="">
+                        <img src="images/home/image1.png" class="img-responsive" alt="">
                     </div>
                     <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
                         <h2>Our values</h2>
@@ -80,12 +68,12 @@ Drupal and Opencart CMS. </p>
                         <P>As we are a web and mobile development company, we provide these services: website design and development, markuping, formation of project requirements, website architecture, IOS and Android app development, and responsive design.</P>
                     </div>
                     <div class="col-sm-5 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="<? echo THEME_DIR; ?>/images/home/image2.png" class="img-responsive" alt="">
+                        <img src="images/home/image2.png" class="img-responsive" alt="">
                     </div>
                 </div>
                 <div class="single-features">
                     <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="<? echo THEME_DIR; ?>/images/home/image3.png" class="img-responsive" alt="">
+                        <img src="images/home/image3.png" class="img-responsive" alt="">
                     </div>
                     <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
                         <h2>Mutual respect and understanding</h2>

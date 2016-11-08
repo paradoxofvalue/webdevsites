@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="<? wp_title(); ?>">
     <meta name="author" content="<? bloginfo('name'); ?>">
-    <title><? bloginfo('name'); ?> | <? wp_title(); ?></title>
+    <title><? bloginfo('name'); ?> | <? if(is_home()) echo 'Home'; else wp_title(); ?></title>
 
     <!--[if lt IE 9]>
 	    <script src="<? echo THEME_DIR; ?>/js/html5shiv.js"></script>

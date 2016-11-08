@@ -248,13 +248,13 @@ class Service_Widget extends WP_Widget {
         </p>
         <p>
             <label for="<?php echo $this->get_field_name( 'content' ); ?>"><?php _e( 'Text:' ); ?></label>
-            <textarea class="widefat" id="<?php echo $this->get_field_id( 'content' ); ?>" name="<?php echo $this->get_field_name( 'content' ); ?>" value="<?php echo esc_attr( $content ); ?>">
+            <textarea class="widefat" id="<?php echo $this->get_field_id( 'content' ); ?>" name="<?php echo $this->get_field_name( 'content' ); ?>"><?php echo esc_attr( $content ); ?>
             </textarea>
         </p>
         <p>
             <label for="<?php echo $this->get_field_id('image_uri'); ?>">Image</label><br />
-            <input type="text" class="img" name="<?php echo $this->get_field_name('image_uri'); ?>" id="<?php echo $this->get_field_id('image_uri'); ?>" value="<?php echo $instance['image_uri']; ?>" />
-            <input type="button" class="select-img" value="Select Image" />
+            <input type="text" class="img" name="<?php echo $this->get_field_name('image_uri'); ?>" id="<?php echo $this->get_field_id('image_uri'); ?>-field" value="<?php echo $instance['image_uri']; ?>" />
+            <input type="button" class="select-img" value="Select Image" id="<?php echo $this->get_field_id('image_uri'); ?>"/>
         </p>
         <?php
     }
@@ -288,3 +288,7 @@ function services_enqueue()
     wp_enqueue_script('services', THEME_DIR . '/script.js', null, null, true);
 }
 add_action('admin_enqueue_scripts', 'services_enqueue');
+
+add_theme_support( 'post-formats', array( 'gallery' ) );
+
+wp_enqueue_media();
