@@ -9,7 +9,7 @@
                         <h2>Testimonials</h2>
                         <?php
 
-                        $the_query = new WP_Query( array('cat' => 'testimonials') );
+                        $the_query = new WP_Query( array('category_name' => 'testimonials') );
 
 
                         if ( $the_query->have_posts() ) {

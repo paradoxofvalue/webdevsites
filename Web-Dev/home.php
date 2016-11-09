@@ -53,35 +53,41 @@
     <section id="features">
         <div class="container">
             <div class="row">
-                <div class="single-features">
-                    <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="images/home/image1.png" class="img-responsive" alt="">
+<?php
+if ( have_posts() ) {
+    $i = 1;
+    while ( have_posts() ) {
+        $p = the_post();
+        if(!in_category('testimonials', $p)) {
+            if($i % 2 == 1 ) {
+                echo '<div class="single-features">
+                                <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
+                                    <img src="'. get_the_post_thumbnail_url() .'" class="img-responsive" alt="">
+                                    
+                                </div>
+                                <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
+                                    <h2>'. get_the_title() .'</h2>
+                                    <p>'. wp_strip_all_tags(get_the_content()) .'</p>
+                                </div>
+                            </div>';
+            }else {
+                echo '<div class="single-features">
+                                <div class="col-sm-6 col-sm-offset-1 align-right wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
+                                    <h2>'. get_the_title() .'</h2>
+                                    <p>'. wp_strip_all_tags(get_the_content()) .'</p>
+                                </div>
+                                <div class="col-sm-5 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
+                                    <img src="'. get_the_post_thumbnail_url() .'" class="img-responsive" alt="">
+                                </div>
+                            </div>
                     </div>
-                    <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <h2>Our values</h2>
-                        <P>xxx is an e-commerce web development company that will bring all your bravest ideas to life! We know how important it is for clients to communicate and cooperate with a company that has firm values, and we do our best to prove it. Creating first-class projects, completing them beforehand, being honest and open-minded are main rules we always follow.</P>
-                    </div>
-                </div>
-                <div class="single-features">
-                    <div class="col-sm-6 col-sm-offset-1 align-right wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <h2>Range of services</h2>
-                        <P>As we are a web and mobile development company, we provide these services: website design and development, markuping, formation of project requirements, website architecture, IOS and Android app development, and responsive design.</P>
-                    </div>
-                    <div class="col-sm-5 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="images/home/image2.png" class="img-responsive" alt="">
-                    </div>
-                </div>
-                <div class="single-features">
-                    <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <img src="images/home/image3.png" class="img-responsive" alt="">
-                    </div>
-                    <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
-                        <h2>Mutual respect and understanding</h2>
-                        <P>Looking for a company to be on the same wavelength with? You can stop your search here! Our outsource web development company will surely take into consideration all your wishes, and we will do our best so that we do not betray your trust. Every client is our partner; that is our main motto, so every time we start a project we build a long-term relationship based on mutual understanding and respect.</P>
-                    </div>
-                </div>
-            </div>
-        </div>
+                </div>';
+            }
+            $i++;
+        }
+    }
+}
+?>
     </section>
      <!--/#features-->
 

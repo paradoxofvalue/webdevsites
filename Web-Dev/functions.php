@@ -284,7 +284,6 @@ function services_enqueue()
     wp_enqueue_style('thickbox');
     wp_enqueue_script('media-upload');
     wp_enqueue_script('thickbox');
-    // moved the js to an external file, you may want to change the path
     wp_enqueue_script('services', THEME_DIR . '/script.js', null, null, true);
 }
 add_action('admin_enqueue_scripts', 'services_enqueue');
