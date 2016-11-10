@@ -84,6 +84,7 @@
     <script type="text/javascript" src="<? echo THEME_DIR; ?>/js/bootstrap.min.js"></script>
     <script type="text/javascript" src="<? echo THEME_DIR; ?>/js/lightbox.min.js"></script>
     <script type="text/javascript" src="<? echo THEME_DIR; ?>/js/wow.min.js"></script>
+    <script type="text/javascript" src="<? echo THEME_DIR; ?>/js/jquery.countTo.js"></script>
     <script type="text/javascript" src="<? echo THEME_DIR; ?>/js/main.js"></script>   
 </body>
 </html>

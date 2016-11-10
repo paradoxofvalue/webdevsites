@@ -28,9 +28,7 @@ function enqueue_styles() {
 add_action( 'wp_enqueue_scripts', 'enqueue_styles' );
 
 // REG NAV
-register_nav_menus( array(
-	'main_menu' => 'Web Dev Navigation Menu'
-) );
+register_nav_menu( 'main_menu', 'Web Dev Navigation Menu' );
 
 function web_dev_customize_register( $wp_customize ) {
   // SECTIONS
@@ -175,7 +173,14 @@ function web_dev_widgets_init() {
     register_sidebar( array(
         'name' => __( 'Services', 'web_dev' ),
         'id' => 'services',
-        'description' => __( 'Use only "Service" Widget!', 'services' )
+        'description' => __( 'Use only "Service" Widget!', 'web_dev' )
+    ) );
+    register_sidebar( array(
+        'name' => __( 'Clients', 'web_dev' ),
+        'id' => 'clients',
+        'description' => __( 'Use only "Image" Widget!', 'web_dev' ),
+        'before_widget' => '<div class="col-xs-3 col-sm-2">',
+        'after_widget' => '</div>'
     ) );
 }
 add_action( 'widgets_init', function(){
@@ -255,10 +260,10 @@ class Service_Widget extends WP_Widget {
             <label for="<?php echo $this->get_field_id('image_uri'); ?>">Image</label><br />
             <input type="text" class="img" name="<?php echo $this->get_field_name('image_uri'); ?>" id="<?php echo $this->get_field_id('image_uri'); ?>-field" value="<?php echo $instance['image_uri']; ?>" />
             <input type="button" class="select-img" value="Select Image" id="<?php echo $this->get_field_id('image_uri'); ?>"/>
+            <img src="<?php echo $instance['image_uri']; ?>" width="100%" class="view">
         </p>
         <?php
     }
-
     /**
      * Sanitize widget form values as they are saved.
      *
@@ -279,15 +284,20 @@ class Service_Widget extends WP_Widget {
     }
 
 }
-function services_enqueue()
+function services_enqueue($hook)
 {
+    if ( 'widgets.php' != $hook ) {
+        return;
+    }
+
     wp_enqueue_style('thickbox');
     wp_enqueue_script('media-upload');
     wp_enqueue_script('thickbox');
     wp_enqueue_script('services', THEME_DIR . '/script.js', null, null, true);
+
+    wp_enqueue_media();
 }
 add_action('admin_enqueue_scripts', 'services_enqueue');
 
 add_theme_support( 'post-formats', array( 'gallery' ) );
 
-wp_enqueue_media();

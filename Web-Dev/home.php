@@ -101,24 +101,7 @@ if ( have_posts() ) {
                         <p>OUR BEST WEBSITE DESIGNS</p>
                     </div>
                     <div class="clients-logo wow fadeIn" data-wow-duration="1000ms" data-wow-delay="600ms">
-                        <div class="col-xs-3 col-sm-2">
-                            <a href="#"><img src="<? echo THEME_DIR; ?>/images/home/client1.png" class="img-responsive" alt=""></a>
-                        </div>
-                        <div class="col-xs-3 col-sm-2">
-                            <a href="#"><img src="<? echo THEME_DIR; ?>/images/home/client2.png" class="img-responsive" alt=""></a>
-                        </div>
-                         <div class="col-xs-3 col-sm-2">
-                            <a href="#"><img src="<? echo THEME_DIR; ?>/images/home/client3.png" class="img-responsive" alt=""></a>
-                        </div>
-                         <div class="col-xs-3 col-sm-2">
-                            <a href="#"><img src="<? echo THEME_DIR; ?>/images/home/client4.png" class="img-responsive" alt=""></a>
-                        </div>
-                         <div class="col-xs-3 col-sm-2">
-                            <a href="#"><img src="<? echo THEME_DIR; ?>/images/home/client5.png" class="img-responsive" alt=""></a>
-                        </div>
-                         <div class="col-xs-3 col-sm-2">
-                            <a href="#"><img src="<? echo THEME_DIR; ?>/images/home/client6.png" class="img-responsive" alt=""></a>
-                        </div>
+                        <?php dynamic_sidebar('clients'); ?>
                     </div>
                 </div>
             </div>
