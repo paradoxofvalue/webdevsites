@@ -32,11 +32,16 @@ register_nav_menu( 'main_menu', 'Web Dev Navigation Menu' );
 
 function web_dev_customize_register( $wp_customize ) {
   // SECTIONS
-  $wp_customize->add_section( 'contacts', array(
-  'title' => __( 'Contact information' ),
-  'description' => __( 'Add address, phone etc. here!' ),
-  'priority' => 30
-) );
+    $wp_customize->add_section( 'contacts', array(
+        'title' => __( 'Contact information' ),
+        'description' => __( 'Add address, phone etc. here!' ),
+        'priority' => 30
+    ) );
+    $wp_customize->add_section( 'geo', array(
+        'title' => __( 'Geoposition' ),
+        'description' => __( 'Geoposition information must be there!' ),
+        'priority' => 30
+    ) );
     $def = array('default' => '1234 Somewhere Street');
 
 											  //SETINGS
@@ -54,7 +59,11 @@ function web_dev_customize_register( $wp_customize ) {
 
 											  $wp_customize->add_setting( 'yelp', $def );
 
-											  $wp_customize->add_setting( 'mail', $def );
+                                              $wp_customize->add_setting( 'mail', $def );
+
+                                              $wp_customize->add_setting( 'lat', $def );
+
+                                              $wp_customize->add_setting( 'lng', $def );
 
 						  //CONTROLS
 							  $wp_customize->add_control( 'address', array(
@@ -104,14 +113,28 @@ function web_dev_customize_register( $wp_customize ) {
 							  'section' => 'contacts',
 							  'label' => __( 'Yelp' ),
 							  'description' => __( 'This is a Yelp link control.' )
-							) );
+                                ) );
 
-							  $wp_customize->add_control( 'mail', array(
-							  'type' => 'text',
-							  'section' => 'contacts',
-							  'label' => __( 'E-mail' ),
-							  'description' => __( 'This is an E-mail control.' )
-							) );
+                            $wp_customize->add_control( 'mail', array(
+                                'type' => 'text',
+                                'section' => 'contacts',
+                                'label' => __( 'E-mail' ),
+                                'description' => __( 'This is an E-mail control.' )
+                            ) );
+
+                            $wp_customize->add_control( 'lat', array(
+                                'type' => 'text',
+                                'section' => 'geo',
+                                'label' => __( 'LAT:' ),
+                                'description' => __( '' )
+                            ) );
+
+                            $wp_customize->add_control( 'lng', array(
+                                'type' => 'text',
+                                'section' => 'geo',
+                                'label' => __( 'LNG:' ),
+                                'description' => __( '' )
+                        ) );
 }
 add_action( 'customize_register', 'web_dev_customize_register' );
 
@@ -179,7 +202,7 @@ function web_dev_widgets_init() {
         'name' => __( 'Clients', 'web_dev' ),
         'id' => 'clients',
         'description' => __( 'Use only "Image" Widget!', 'web_dev' ),
-        'before_widget' => '<div class="col-xs-3 col-sm-2">',
+        'before_widget' => '<div class="col-xs-10 col-xs-offset-1 col-sm-offset-0 col-sm-2">',
         'after_widget' => '</div>'
     ) );
 }
@@ -214,15 +237,16 @@ class Service_Widget extends WP_Widget {
         extract( $args );
         $title = apply_filters( 'widget_title', $instance['title'] );
         $content = $instance['content'];
+        $link = $instance['link'];
 
         echo '<div class="col-sm-4 text-center padding wow fadeIn" data-wow-duration="1000ms" data-wow-delay="300ms">
-                    <div class="single-service">
+                    <div class="single-service"><a href="'. $link .'">
                         <div class="wow scaleIn" data-wow-duration="500ms" data-wow-delay="300ms">
                             <img src="'.esc_url($instance['image_uri']).'" alt="">
                         </div>
                         <h2>'. $title .'</h2>
                         <p>'. $content .'</p>
-                    </div>
+                    </a></div>
                 </div>';
     }
 
@@ -246,10 +270,20 @@ class Service_Widget extends WP_Widget {
         else {
             $content = __( '', 'web_dev' );
         }
+        if ( isset( $instance[ 'link' ] ) ) {
+            $link = $instance[ 'link' ];
+        }
+        else {
+            $link = __( '', 'web_dev' );
+        }
         ?>
         <p>
             <label for="<?php echo $this->get_field_name( 'title' ); ?>"><?php _e( 'Title:' ); ?></label>
             <input class="widefat" id="<?php echo $this->get_field_id( 'title' ); ?>" name="<?php echo $this->get_field_name( 'title' ); ?>" type="text" value="<?php echo esc_attr( $title ); ?>" />
+        </p>
+        <p>
+            <label for="<?php echo $this->get_field_name( 'link' ); ?>"><?php _e( 'Link:' ); ?></label>
+            <input class="widefat" id="<?php echo $this->get_field_id( 'link' ); ?>" name="<?php echo $this->get_field_name( 'link' ); ?>" type="text" value="<?php echo esc_attr( $link ); ?>" />
         </p>
         <p>
             <label for="<?php echo $this->get_field_name( 'content' ); ?>"><?php _e( 'Text:' ); ?></label>
@@ -278,6 +312,7 @@ class Service_Widget extends WP_Widget {
         $instance = array();
         $instance['title'] = ( !empty( $new_instance['title'] ) ) ? strip_tags( $new_instance['title'] ) : '';
         $instance['content'] = ( !empty( $new_instance['content'] ) ) ? strip_tags( $new_instance['content'] ) : '';
+        $instance['link'] = ( !empty( $new_instance['link'] ) ) ? strip_tags( $new_instance['link'] ) : '';
         $instance['image_uri'] = ( !empty( $new_instance['image_uri'] ) ) ? strip_tags( $new_instance['image_uri'] ) : '';
 
         return $instance;

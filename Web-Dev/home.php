@@ -61,33 +61,31 @@ if ( have_posts() ) {
         if(!in_category('testimonials', $p)) {
             if($i % 2 == 1 ) {
                 echo '<div class="single-features">
-                                <div class="col-sm-5 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
-                                    <img src="'. get_the_post_thumbnail_url() .'" class="img-responsive" alt="">
+                                <div class="col-sm-2 wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
+                                    <img src="'. get_the_post_thumbnail_url() .'" class="img-responsive" alt=""  style="float: right;">
                                     
                                 </div>
-                                <div class="col-sm-6 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
+                                <div class="col-sm-4 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
                                     <h2>'. get_the_title() .'</h2>
                                     <p>'. wp_strip_all_tags(get_the_content()) .'</p>
                                 </div>
-                            </div>';
+                       </div>';
             }else {
                 echo '<div class="single-features">
-                                <div class="col-sm-6 col-sm-offset-1 align-right wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
+                                <div class="col-sm-4 col-sm-offset-5 align-right wow fadeInLeft" data-wow-duration="500ms" data-wow-delay="300ms">
                                     <h2>'. get_the_title() .'</h2>
                                     <p>'. wp_strip_all_tags(get_the_content()) .'</p>
                                 </div>
-                                <div class="col-sm-5 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
+                                <div class="col-sm-2 wow fadeInRight" data-wow-duration="500ms" data-wow-delay="300ms">
                                     <img src="'. get_the_post_thumbnail_url() .'" class="img-responsive" alt="">
                                 </div>
-                            </div>
-                    </div>
-                </div>';
+                       </div>';
             }
             $i++;
         }
     }
 }
-?>
+?>  </div>
     </section>
      <!--/#features-->
 

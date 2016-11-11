@@ -82,14 +82,13 @@ jQuery(function($) {'use strict';
 	$.each($('div.progress-bar'),function(){
 		$(this).css('width', $(this).attr('data-transition')+'%');
 	});
-
 	if( $('#gmap').length ) {
 		var map;
 
 		map = new GMaps({
 			el: '#gmap',
-			lat: 43.04446,
-			lng: -76.130791,
+			lat: $('#lat').val(),
+			lng: $('#lng').val(),
 			scrollwheel:false,
 			zoom: 16,
 			zoomControl : false,
@@ -101,13 +100,13 @@ jQuery(function($) {'use strict';
 		});
 
 		map.addMarker({
-			lat: 43.04446,
-			lng: -76.130791,
+			lat: $('#lat').val(),
+			lng: $('#lng').val(),
 			animation: google.maps.Animation.DROP,
 			verticalAlign: 'bottom',
 			horizontalAlign: 'center',
 			backgroundColor: '#3e8bff',
 		});
 	}
-
+	$('.clients-logo div .img-square').attr('class', 'img-responsive');
 });

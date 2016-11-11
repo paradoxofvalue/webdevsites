@@ -85,6 +85,8 @@
     <script type="text/javascript" src="<? echo THEME_DIR; ?>/js/lightbox.min.js"></script>
     <script type="text/javascript" src="<? echo THEME_DIR; ?>/js/wow.min.js"></script>
     <script type="text/javascript" src="<? echo THEME_DIR; ?>/js/jquery.countTo.js"></script>
-    <script type="text/javascript" src="<? echo THEME_DIR; ?>/js/main.js"></script>   
+    <script type="text/javascript" src="<? echo THEME_DIR; ?>/js/main.js"></script>
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+    <script type="text/javascript" src="<? echo THEME_DIR; ?>/js/gmaps.js"></script>
 </body>
 </html>
