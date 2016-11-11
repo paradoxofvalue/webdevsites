@@ -336,3 +336,11 @@ add_action('admin_enqueue_scripts', 'services_enqueue');
 
 add_theme_support( 'post-formats', array( 'gallery' ) );
 
+add_theme_support( 'custom-logo', array(
+    'height'      => 60,
+    'width'       => 200,
+    'flex-height' => true,
+    'flex-width'  => true,
+    'header-text' => array( 'site-title', 'site-description' ),
+) );
+

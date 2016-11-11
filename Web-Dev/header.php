@@ -40,7 +40,10 @@
                     </button>
 
                     <a class="navbar-brand" href="<?php echo home_url(); ?>">
-                    	<h1><img src="<? echo THEME_DIR; ?>/images/logo.png" alt="logo"></h1>
+                        <?php $custom_logo_id = get_theme_mod( 'custom_logo' );
+                        $logo = wp_get_attachment_image_src( $custom_logo_id , 'full' );
+                        ?>
+                    	<h1><img src="<? echo $logo[0]; ?>" alt="logo"></h1>
                     </a>
                     
                 </div>
