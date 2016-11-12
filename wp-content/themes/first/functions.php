@@ -8,7 +8,6 @@ remove_action('wp_head', 'wp_generator');
 function enqueue_styles()
 {
 
-
     wp_register_style('style_main', THEME_DIR . '/assets/css/style.css', array(), '1', 'all');
     wp_register_style('font-awesone', THEME_DIR . '/assets/css/font-awesome.min.css', array(), '1', 'all');
 
@@ -25,7 +24,6 @@ register_nav_menus(array(
 ));
 show_admin_bar(0);
 
-
 add_action( 'widgets_init', 'first_widgets_init' );
 
 function first_widgets_init() {
@@ -34,24 +32,29 @@ function first_widgets_init() {
         'id' => 'slider-1',
         'description' => __( '', 'first' )
     ) );
-    register_sidebar( array(
-        'name' => __( 'Second slider', 'first' ),
-        'id' => 'slider-2',
-        'description' => __( '', 'first' )
-    ) );
 }
 
 add_filter('widget_text', 'do_shortcode');
 
-function sub_zero_customize_register( $wp_customize )
+function web_dev_customize_register( $wp_customize )
 {
     // SECTIONS
+    // social
     $wp_customize->add_section('socials', array(
         'title' => __('Socials'),
+        'description' => __('Link to social network'),
         'priority' => 30
     ));
 
-    //SETINGS
+    // services
+    $wp_customize->add_section('services', array(
+        'title' => __('Services'),
+        'description' => __('Link to services'),
+        'priority' => 30
+    ));
+
+    // SETINGS
+    // social
     $wp_customize->add_setting( 'twitter', array('default' => 'https://twitter.com') );
 
     $wp_customize->add_setting( 'facebook', array('default' => 'https://facebook.com') );
@@ -62,7 +65,15 @@ function sub_zero_customize_register( $wp_customize )
 
     $wp_customize->add_setting( 'email', array('default' => 'https://email.com') );
 
-    //CONTROLS
+    // services
+    $wp_customize->add_setting( 'ecommerce', array('default' => 'http://vlove.com.ua/websites/whiteweb1/e-commerce/') );
+
+    $wp_customize->add_setting( 'websitedevelopment', array('default' => 'http://vlove.com.ua/websites/whiteweb1/web-development/') );
+
+    $wp_customize->add_setting( 'mobileappdevelopment', array('default' => ' http://vlove.com.ua/websites/whiteweb1/mobile-app-development/') );
+
+    // CONTROLS
+    // social
     $wp_customize->add_control( 'twitter', array(
         'type' => 'text',
         'section' => 'socials',
@@ -97,9 +108,31 @@ function sub_zero_customize_register( $wp_customize )
         'label' => __( 'Email' ),
         'description' => __( 'Our email.' )
     ) );
+
+    // services
+    $wp_customize->add_control( 'ecommerce', array(
+    'type' => 'text',
+    'section' => 'services',
+    'label' => __( 'E-Commerce' ),
+    'description' => __( 'Page link.' )
+) );
+
+    $wp_customize->add_control( 'websitedevelopment', array(
+        'type' => 'text',
+        'section' => 'services',
+        'label' => __( 'Website Development' ),
+        'description' => __( 'Page link.' )
+    ) );
+
+    $wp_customize->add_control( 'mobileappdevelopment', array(
+        'type' => 'text',
+        'section' => 'services',
+        'label' => __( 'Mobile App Development' ),
+        'description' => __( 'Page link.' )
+    ) );
 }
 
-add_action( 'customize_register', 'sub_zero_customize_register' );
+add_action( 'customize_register', 'web_dev_customize_register' );
 
 function icon_meta_box_markup($object)
 {

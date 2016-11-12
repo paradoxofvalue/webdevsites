@@ -15,33 +15,52 @@
     <section id="one" class="wrapper style1 special">
         <div class="inner">
             <header class="major">
-                <h2>
-                    E-commerce. <br/>
-                    Website developmen. <br/>
-                    Mobile app development.
-                </h2>
-                <p>We develop profitable ecommerce websites for the sake of your KPIs and conversion rates based on Magento, Drupal and Opencart CMS and offer responsive website development which will make your life easier and cheaper. You will enjoy Android and IOS app development services provided by our company. </p>
+                <h2>SERVICES</h2>
+                <p>We develop profitable ecommerce websites for the sake of your KPIs and conversion rates based on CMS.<br/>
+                    We offer responsive website development which will make your life easier and cheaper.<br/>
+                    You will enjoy Android and IOS app development services provided by our company. </p>
             </header>
-            <ul class="icons major">
-                <li><span class="icon fa-diamond major style1"><span class="label">Lorem</span></span></li>
-                <li><span class="icon fa-heart-o major style2"><span class="label">Ipsum</span></span></li>
-                <li><span class="icon fa-code major style3"><span class="label">Dolor</span></span></li>
+            <ul class="icons major services">
+                <li><a href="<?php echo get_theme_mod('ecommerce'); ?>"><span class="icon fa-cogs major style1"><span class="label">Lorem</span></span><br/>E-COMMERCE</a></li>
+                <li><a href="<?php echo get_theme_mod('websitedevelopment'); ?>"><span class="icon fa-desktop major style2"><span class="label">Ipsum</span></span><br/>WEB DEVELOPMENT</a></li>
+                <li><a href="<?php echo get_theme_mod('mobileappdevelopment'); ?>"><span class="icon fa-mobile major style3"><span class="label">Dolor</span></span><br/>MOBILE APP DEVELOPMENT</a></li>
             </ul>
         </div>
     </section>
 
     <!-- Two -->
     <section id="two" class="wrapper alt style2">
-        <?php
-            dynamic_sidebar('slider-1');
-        ?>
+        <header class="major">
+            <h2 class="portfolio-main-title">OUR WORKS</h2>
+        </header>
+        <p class="portfolio-main-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci aliquam architecto eaque enim inventore laboriosam, magni nisi placeat quam reprehenderit sed sequi sunt temporibus! Architecto culpa nesciunt quae ratione sequi.</p>
+        <ul class="features">
+            <?php
+                $args = array(
+                    'category_name' => 'portfolio',
+                    'posts_per_page' => '3');
+                $my_posts = get_posts($args);
+                foreach( $my_posts as $post )
+                {
+                    setup_postdata($post);
+
+                    echo '<li class="icon portfolio-preview">
+                              <a href="' . get_the_permalink() . '"> 
+                                  <h3 class="portfolio-title">' . get_the_title() . '</h3>
+                                  ' . get_the_content() . '
+                              </a>
+                          </li>';
+                }
+                wp_reset_postdata();
+            ?>
+        </ul>
     </section>
 
     <!-- Three -->
     <section id="three" class="wrapper style3 special">
         <div class="inner">
             <header class="major">
-                <h2>ESSENTIAL ADVANTAGES OF ARTJOKER <br/> = OUR 6 TIPS TO BE A GOOD PARTNER
+                <h2>ESSENTIAL ADVANTAGES OF White Web <br/><span class="more_character">=</span><br/> OUR 6 TIPS TO BE A GOOD PARTNER
                     sed condimentum</h2>
                 <p>Want to check our professionalism? Contact our manager and order the website development. We promise you that immediately after its launching, you already will be able to make sure we are the best website design company.</p>
             </header>
@@ -49,9 +68,9 @@
                 <?php
                     global $post;
                     $args = array(
-                        'category' => 'main_link',
+                        'category_name' => 'main_link',
                         'posts_per_page' => '6');
-                    $my_posts = get_posts(  "category=4&orderby=date&numberposts=6");
+                    $my_posts = get_posts($args);
                     foreach( $my_posts as $post )
                     {
                         setup_postdata($post);
@@ -67,10 +86,27 @@
         </div>
     </section>
 
+    <!-- Four -->
     <section id="four" class="wrapper alt style2">
-        <?php
-        dynamic_sidebar('slider-2');
-        ?>
+        <h2>CLients' testimonials</h2>
+        <ul class="testimonials">
+            <?php
+                global $post;
+                $args = array(
+                    'category_name' => 'testimonials',
+                    'posts_per_page' => '3');
+                $my_posts = get_posts($args);
+                foreach( $my_posts as $post )
+                {
+                    setup_postdata($post);
+                    echo '<li>
+                              <h3>' . get_the_title() . '</h3>
+                              ' . get_the_content() . '
+                          </li>';
+                }
+                wp_reset_postdata();
+            ?>
+        </ul>
     </section>
 
     <!-- CTA -->
@@ -81,9 +117,10 @@
                 <p>Write to us or know more.</p>
             </header>
             <ul class="actions vertical">
-                <li><a href="contacts.thml" id="request_but" class="button fit">REQUEST A QUOTE</a></li>
+                <!-- here static link -->
+                <li><a href="http://vlove.com.ua/websites/whiteweb1/contacts/" id="request_but" class="button fit">REQUEST A QUOTE</a></li>
             </ul>
         </div>
     </section>
 
-<?php get_footer(); ?> 
+<?php get_footer(); ?>
